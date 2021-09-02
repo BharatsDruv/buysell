@@ -1,8 +1,8 @@
 const express=require('express')
 const router=express.Router()
 
-router.get('/api',(req,res)=>{
-    res.send("hello from node");
-});
+const {sayHi}=require('../controllers/user');
+
+router.get('/api',sayHi);
 
 module.exports=router;
