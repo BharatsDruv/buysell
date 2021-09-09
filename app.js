@@ -7,7 +7,9 @@ const expressValidator=require('express-validator')
 
 require('dotenv').config()
 //import Routes
-const userRoutes=require('./routes/user')
+const authRoutes=require('./routes/auth');
+const userRoutes=require('./routes/user');
+
 // import mongoose
 const mongoose = require('mongoose');
 // load env variables
@@ -32,6 +34,7 @@ mongoose.connection.on('error', err => {
 });
 
 //routes middleware
+app.use(authRoutes)
 app.use(userRoutes)
 
 const port=process.env.PORT || 8000
