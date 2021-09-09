@@ -49,11 +49,18 @@ userSchema.virtual('password')
 })
 
 userSchema.methods={
+
+    authenticate: function(plainText)
+    {
+        return this.encryptPassword(plainText)===this.hashed_password;
+        
+    },
+
     encryptPassword: function(password){
         if(!password)return '';
         try{
-            return crypto.createHashmac('sha1',this.salt)
-            .updtae(password)
+            return crypto.createHmac('sha1',this.salt)
+            .update(password)
             .digest('hex')
         }
         catch(err)
