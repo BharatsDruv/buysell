@@ -9,6 +9,7 @@ require('dotenv').config()
 //import Routes
 const authRoutes=require('./routes/auth');
 const userRoutes=require('./routes/user');
+const categoryRoutes=require('./routes/category');
 
 // import mongoose
 const mongoose = require('mongoose');
@@ -34,8 +35,9 @@ mongoose.connection.on('error', err => {
 });
 
 //routes middleware
-app.use(authRoutes)
-app.use(userRoutes)
+app.use(authRoutes);
+app.use(userRoutes);
+app.use(categoryRoutes);
 
 const port=process.env.PORT || 8000
 
